@@ -1205,7 +1205,7 @@ get_background_proc(struct proc *curp, struct proc *targetp, int *priority)
 
 	external = (curp == targetp) ? TASK_POLICY_INTERNAL : TASK_POLICY_EXTERNAL;
 
-	*priority = proc_get_task_policy(current_task(), external, TASK_POLICY_DARWIN_BG);
+	*priority = proc_get_task_policy(proc_task(targetp), external, TASK_POLICY_DARWIN_BG);
 
 out:
 	kauth_cred_unref(&target_cred);
